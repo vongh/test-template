@@ -1,0 +1,10 @@
+# These Hosts are used to run the Ansible tasks. They should be within the same VPC as the Kafka Connect and be reachable by SSH
+
+[kafka-connect-local]
+localhost
+
+[kafka-connect-dev]
+10.13.80.171
+
+[kafka-connect-prod]
+10.13.89.49

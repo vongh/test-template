@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.tabcorp</groupId>
+    <artifactId>kafka-connector</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <!-- ******************** -->
+    <!-- Properties-->
+    <!-- ******************** -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <kafka-connect-transform-lib-version>0.0.1-SNAPSHOT</kafka-connect-transform-lib-version>
+        <maven-compiler-version>3.5.1</maven-compiler-version>
+        <java-version>1.8</java-version>
+    </properties>
+
+    <!-- ******************** -->
+    <!-- Repositories -->
+    <!-- ******************** -->
+    <repositories>
+        <repository>
+            <id>aws-release</id>
+            <name>AWS Release Repository</name>
+            <url>s3://tabcorp-datascience-artifacts/releases</url>
+        </repository>
+        <repository>
+            <id>aws-snapshot</id>
+            <name>AWS Snapshot Repository</name>
+            <url>s3://tabcorp-datascience-artifacts/snapshots</url>
+        </repository>
+    </repositories>
+
+    <!-- ******************** -->
+    <!-- Dependencies -->
+    <!-- ******************** -->
+    <dependencies>
+        <dependency>
+            <groupId>com.tabcorp</groupId>
+            <artifactId>kafka-connect-transform-lib</artifactId>
+            <version>${kafka-connect-transform-lib-version}</version>
+        </dependency>
+    </dependencies>
+
+    <!-- ******************** -->
+    <!-- Build -->
+    <!-- ******************** -->
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.springframework.build</groupId>
+                <artifactId>aws-maven</artifactId>
+                <version>5.0.0.RELEASE</version>
+            </extension>
+        </extensions>
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-version}</version>
+                <configuration>
+                    <source>${java-version}</source>
+                    <target>${java-version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

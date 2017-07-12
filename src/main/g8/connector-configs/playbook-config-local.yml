@@ -1,0 +1,15 @@
+- hosts:  kafka-connect-local
+  gather_facts: no
+  vars_files:
+    - connectors.yml
+    - common.yml
+    - local/local.yml
+    - local/local.vault.yml
+  tasks:
+    - name:                   Deploy local connectors
+      kafka_connect:
+       connect_base_url:      "http://localhost:8083/"
+       connectors:
+        - "{{ test_connector }}"
+       delete_missing:        yes
+      register:               result

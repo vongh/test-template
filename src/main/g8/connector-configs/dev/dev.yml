@@ -1,0 +1,2 @@
+schema_registry_url: "http://localhost:8081"
+connection_url: "jdbc:postgresql://postgres:5432/postgres"

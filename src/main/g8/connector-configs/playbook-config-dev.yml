@@ -1,0 +1,15 @@
+- hosts:  kafka-connect-dev
+  gather_facts: no
+  vars_files:
+    - connectors.yml
+    - common.yml
+    - dev/dev.yml
+    - dev/dev.vault.yml
+  tasks:
+    - name:                   Deploy Dev connectors
+      kafka_connect:
+       connect_base_url:      "http://$name$.connect.kafka.dev.analytics.in.cld"
+       connectors:
+        - "{{ test_connector }}"
+       delete_missing:        yes
+      register:               result

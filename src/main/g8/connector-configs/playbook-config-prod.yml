@@ -1,0 +1,15 @@
+- hosts:  kafka-connect-prod
+  gather_facts: no
+  vars_files:
+    - connectors.yml
+    - common.yml
+    - prod/prod.yml
+    - prod/prod.vault.yml
+  tasks:
+    - name:                   Deploy prod connectors
+      kafka_connect:
+       connect_base_url:      "http://$name$.connect.kafka.prod.analytics.in.cld"
+       connectors:
+        - "{{ test_connector }}"
+       delete_missing:        yes
+      register:               result
